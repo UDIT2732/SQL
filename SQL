@@ -1,0 +1,139 @@
+Q1: Most Profitable Companies
+Soln:
+SELECT company,
+       profits
+FROM   forbes_global_2010_2014
+ORDER  BY profits DESC
+LIMIT  3; 
+
+------------------------------
+Q2: Workers With The Highest Salaries
+Soln:
+SELECT t.worker_title
+FROM   worker w
+       LEFT JOIN title t
+              ON w.worker_id = t.worker_ref_id
+WHERE  w.salary = (SELECT Max(salary)
+                   FROM   worker);
+                   
+------------------------------
+Q3: Users By Average Session Time
+Soln:
+WITH tab1
+     AS (SELECT user_id,
+                Extract(day FROM timestamp) AS day,
+                Max(CASE
+                      WHEN action = 'page_load' THEN timestamp
+                      ELSE NULL
+                    END)                    AS LOAD,
+                Min(CASE
+                      WHEN action = 'page_exit' THEN timestamp
+                      ELSE NULL
+                    END)                    AS EXIT
+         FROM   facebook_web_log
+         GROUP  BY 1,
+                   2)
+SELECT user_id,
+       Avg(EXIT - LOAD)
+FROM   tab1
+GROUP  BY 1
+HAVING Avg(EXIT - LOAD) IS NOT NULL
+ORDER  BY 1 
+
+------------------------------
+Q4: Activity Rank
+Soln:
+SELECT from_user,
+       Count(from_user),
+       Row_number()
+         OVER(
+           ORDER BY Count(from_user) DESC, from_user) AS rn
+FROM   google_gmail_emails
+GROUP  BY 1
+ORDER  BY Count(from_user) DESC,
+          from_user;
+          
+------------------------------
+Q5: Dustance Travelled
+Soln:
+SELECT l.user_id,
+       n.name,
+       Sum(l.distance)
+FROM   lyft_rides_log l
+       LEFT JOIN lyft_users n
+              ON l.user_id = n.id
+GROUP  BY 1,
+          2
+ORDER  BY Sum(l.distance) DESC
+LIMIT  10; 
+
+------------------------------
+Q6: Finding User Purchases
+Soln:
+WITH tab1
+     AS (SELECT user_id,
+                created_at,
+                Lead(created_at, 1)
+                  OVER(
+                    partition BY user_id
+                    ORDER BY created_at) AS new_date
+         FROM   amazon_transactions)
+SELECT user_id
+FROM   tab1
+GROUP  BY user_id
+HAVING Min(new_date - created_at) BETWEEN 0 AND 7
+ORDER  BY user_id
+
+------------------------------
+Q7: New Products
+Soln:
+SELECT company_name,
+       Sum(CASE
+             WHEN year = 2020 THEN 1
+             ELSE 0
+           END) - Sum(CASE
+                        WHEN year = 2019 THEN 1
+                        ELSE 0
+                      END) AS y19
+FROM   car_launches
+GROUP  BY company_name;
+
+------------------------------
+Q8: Cities With The Most Expensive Homes
+Soln:
+SELECT city
+FROM   zillow_transactions
+GROUP  BY 1
+HAVING Avg(mkt_price) > (SELECT Avg(mkt_price)
+                         FROM   zillow_transactions)
+ORDER  BY Avg(mkt_price) 
+
+------------------------------ [ Instead of using CASE use {max(..) FILTER(WHERE ...)} ]
+Q9: Salaries Differences
+Soln:
+SELECT Abs(Max(CASE
+                 WHEN d.department = 'engineering' THEN e.salary
+                 ELSE 0
+               END) - Max(CASE
+                            WHEN d.department = 'marketing' THEN e.salary
+                            ELSE 0
+                          END))
+FROM   db_employee e
+       LEFT JOIN db_dept d
+              ON e.department_id = d.id 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
