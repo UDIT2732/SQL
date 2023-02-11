@@ -1,3 +1,109 @@
+
+Q10: Risky Projects (https://platform.stratascratch.com/coding/10304-risky-projects?code_type=1)
+Logic: Join the three tables and group by the sum of salaries of employees for each project
+Soln:
+SELECT p.title,
+       p.budget,
+       Round(Sum(e.salary * Round(1.00 * ( p.end_date -
+             p.start_date ) / 365, 2)), 0)
+FROM   linkedin_projects p
+       LEFT JOIN linkedin_emp_projects ep
+              ON p.id = ep.project_id
+       LEFT JOIN linkedin_employees e
+              ON ep.emp_id = e.id
+GROUP  BY p.title,
+          p.budget
+HAVING Sum(e.salary * Round(1.00 * ( p.end_date - p.start_date ) / 365, 2)) >
+       p.budget
+ORDER  BY p.title 
+-------------------------------------------------------------------------------------------------------------------------------
+
+Q10: Expensive Projects (https://platform.stratascratch.com/coding/10301-expensive-projects?code_type=1)
+Logic: Join the two tables and group by the count of employees for each project
+Soln:
+WITH tab1
+     AS (SELECT p.title         AS title,
+                p.budget        AS budget,
+                Count(e.emp_id) AS count1
+         FROM   ms_projects p
+                RIGHT JOIN ms_emp_projects e
+                        ON p.id = e. project_id
+         GROUP  BY 1,
+                   2)
+SELECT title,
+       budget / count1
+FROM   tab1
+ORDER  BY 2 DESC 
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Q11: Finding Updated Records (https://platform.stratascratch.com/coding/10299-finding-updated-records?code_type=1)
+Logic: super easy
+Soln:
+SELECT id,
+       first_name,
+       last_name,
+       department_id,
+       Max(salary)
+FROM   ms_employee_salary
+GROUP  BY 1,
+          2,
+          3,
+          4
+ORDER  BY 1
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Q11: Most Active Users On Messenger (https://platform.stratascratch.com/coding/10295-most-active-users-on-messenger?code_type=1)
+Logic: you can use unpivot or union all. Since we need the duplicated thats why union all instead of union 
+Soln:
+WITH tab1 AS
+(
+         SELECT   user1          AS usernames,
+                  Sum(msg_count) AS sm
+         FROM     fb_messages
+         GROUP BY 1
+         UNION ALL
+         SELECT   user2          AS usernames,
+                  Sum(msg_count) AS sm
+         FROM     fb_messages
+         GROUP BY 1)
+SELECT   usernames,
+         Sum(sm)
+FROM     tab1
+GROUP BY 1
+ORDER BY 2 DESC limit 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Q1: Most Profitable Companies
 Soln:
 SELECT company,
