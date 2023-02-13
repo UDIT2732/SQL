@@ -1,0 +1,28 @@
+/*
+Which company had the biggest month decline in users placing a call from March to April 2020? Return the company_id and calls difference for the company with the highest decline.
+
+Tables: rc_calls, rc_users
+
+rc_calls
+user_id:int
+date:datetime
+call_id:int
+
+rc_users
+user_id:int
+status:varchar
+company_id:int
+
+*/
+
+soln:
+
+select u.company_id, 
+count(c.call_id) 
+filter(where extract(month from c.date) = 3 and 
+    extract(year from c.date) = 2020) - count(c.call_id) 
+filter(where extract(month from c.date) = 4 and 
+    extract(year from c.date) = 2020) as call_diff
+from rc_calls c left join rc_users u on c.user_id = u.user_id
+group by 1
+order by call_diff desc limit 1;
