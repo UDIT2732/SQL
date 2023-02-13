@@ -54,7 +54,7 @@ ORDER  BY 1
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Q11: Most Active Users On Messenger (https://platform.stratascratch.com/coding/10295-most-active-users-on-messenger?code_type=1)
+Q12: Most Active Users On Messenger (https://platform.stratascratch.com/coding/10295-most-active-users-on-messenger?code_type=1)
 Logic: you can use unpivot or union all. Since we need the duplicated thats why union all instead of union 
 Soln:
 WITH tab1 AS
@@ -74,35 +74,7 @@ FROM     tab1
 GROUP BY 1
 ORDER BY 2 DESC limit 10
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---------------------------------------------------------------------
 
 Q1: Most Profitable Companies
 Soln:
