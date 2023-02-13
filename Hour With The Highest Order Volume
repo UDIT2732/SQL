@@ -1,0 +1,18 @@
+Which hour has the highest average order volume per day? Your output should have the hour which satisfies that condition, and average order volume.
+
+Table: postmates_orders
+id:int
+customer_id:int
+courier_id:int
+seller_id:int
+order_timestamp_utc:datetime
+amount:float
+city_id:int
+
+Logic: SUM of order amount for each hour / number of days where those hours appeared or had orders
+Soln:
+SELECT Extract(hour FROM order_timestamp_utc) AS hour
+FROM   postmates_orders
+GROUP  BY hour
+ORDER  BY Sum(amount) / Count(1) DESC
+LIMIT  1;
