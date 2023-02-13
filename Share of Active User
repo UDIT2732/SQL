@@ -1,0 +1,26 @@
+/*
+Share of Active User
+
+https://platform.stratascratch.com/coding/2005-share-of-active-users?python=
+
+Difficulty: Medium
+
+Return the share of monthly active users in the United States (US). Active users are the ones with an "open" status in the table.
+
+Tables:
+
+<fb_active_users>
+user_id             int
+name                varchar
+status              varchar
+country             varchar
+*/
+
+-- objective:
+-- find the proportion of active USA users / all users 
+
+Logic: Use count() filter(where ...)
+soln:
+SELECT 100             *Count(user_id) filter(WHERE country = 'USA'
+AND    status = 'open')/ count(user_id)
+FROM   fb_active_users;
