@@ -1,0 +1,23 @@
+/*
+Share of Loan Balance
+https://platform.stratascratch.com/coding/2001-share-of-loan-balance?python=
+Difficulty: Medium
+Write a query that returns the rate_type, loan_id and balance of each loan type, and a column that shows what percentage of the submission’s total balance each loan constitutes.
+Tables:
+<submissions>
+id                      int
+balance                 float
+interest_rate           float
+rate_type               varchar
+loan_id                 int
+*/
+
+Logic: Sum of a column within each group of rate_type > use sum() over()
+Soln:
+SELECT rate_type,
+       loan_id,
+       balance,
+       100 * balance / Sum(balance)
+                         OVER(
+                           partition BY rate_type) AS PERCENT
+FROM   submissions; 
