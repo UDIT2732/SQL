@@ -22,11 +22,12 @@ balance         float
 interest_rate   float
 rate_type       varchar
 loan_id         int
-*/
 
 Logic: first filter out the loans table taking the latest date only > use max() over() and then match that column with original created_date column
 
 Soln:
+*/
+
 WITH tab1
      AS (SELECT DISTINCT user_id,
                          created_at,

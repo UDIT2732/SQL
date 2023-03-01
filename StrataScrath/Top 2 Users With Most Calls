@@ -17,10 +17,10 @@ user_id     int
 status      varchar
 company_id  int
 
-*/
-
 Logic: use dense rank on count of calls per user within each company
 soln:
+*/
+
 WITH tab1
      AS (SELECT c.user_id                   AS user_id,
                 u.company_id                AS company_id,

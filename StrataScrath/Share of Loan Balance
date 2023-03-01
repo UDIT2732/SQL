@@ -10,10 +10,11 @@ balance                 float
 interest_rate           float
 rate_type               varchar
 loan_id                 int
-*/
-
 Logic: Sum of a column within each group of rate_type > use sum() over()
 Soln:
+*/
+
+
 SELECT rate_type,
        loan_id,
        balance,

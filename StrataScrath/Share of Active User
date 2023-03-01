@@ -14,13 +14,14 @@ user_id             int
 name                varchar
 status              varchar
 country             varchar
-*/
 
 -- objective:
 -- find the proportion of active USA users / all users 
 
 Logic: Use count() filter(where ...)
 soln:
+*/
+
 SELECT 100             *Count(user_id) filter(WHERE country = 'USA'
 AND    status = 'open')/ count(user_id)
 FROM   fb_active_users;

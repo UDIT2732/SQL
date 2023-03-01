@@ -13,9 +13,10 @@ user_id:int
 status:varchar
 company_id:int
 
-*/
 
 soln:
+*/
+
 
 select u.company_id, 
 count(c.call_id) 
