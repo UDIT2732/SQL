@@ -1,0 +1,7 @@
+/*
+https://www.hackerrank.com/challenges/weather-observation-station-18/problem?isFullScreen=true
+*/
+
+SELECT Round(Abs(Min(lat_n)-Max(lat_n))
+             + Abs(Min(long_w)- Max(long_w)), 4)
+FROM   station 
