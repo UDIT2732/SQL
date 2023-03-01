@@ -1,0 +1,30 @@
+/*
+https://www.hackerrank.com/challenges/the-pads/problem?isFullScreen=true
+Sample Output
+
+Ashely(P)
+Christeen(P)
+Jane(A)
+Jenny(D)
+Julia(A)
+Ketty(P)
+Maria(A)
+Meera(S)
+Priya(S)
+Samantha(D)
+There are a total of 2 doctors.
+There are a total of 2 singers.
+There are a total of 3 actors.
+There are a total of 3 professors.
+
+*/
+
+SELECT Concat(NAME, "(", LEFT(occupation, 1), ")")
+FROM   occupations
+ORDER  BY NAME;
+
+SELECT Concat("there are a total of", Count(occupation), "", Lower(occupation)
+       , "s.")
+FROM   occupations
+GROUP  BY occupation
+ORDER  BY 1; 
