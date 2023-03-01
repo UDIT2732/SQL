@@ -1,0 +1,28 @@
+/*
+
+https://www.hackerrank.com/challenges/occupations/problem?isFullScreen=true
+
+*/
+
+
+WITH tab1
+     AS (SELECT *,
+                Row_number()
+                  OVER(
+                    partition BY occupation
+                    ORDER BY NAME) AS rn
+         FROM   occupations)
+SELECT Max(CASE
+             WHEN occupation = 'Doctor' THEN NAME
+           END) AS Doctor,
+       Max(CASE
+             WHEN occupation = 'Professor' THEN NAME
+           END) AS Professor,
+       Max(CASE
+             WHEN occupation = 'Singer' THEN NAME
+           END) AS Singer,
+       Max(CASE
+             WHEN occupation = 'Actor' THEN NAME
+           END) AS Actor
+FROM   tab1
+GROUP  BY rn 
