@@ -1,0 +1,77 @@
+/*
+Top 2 Users With Most Calls
+
+<<<<<<< HEAD
+https://platform.stratascratch.com/coding/2019-top-2-users-with-most-calls?
+
+Difficulty: Medium
+
+Return the top 2 users in each company that called the most. Output the company_id, user_id, and the user's rank. If there are multiple users in the same rank, keep all of them.
+
+Tables:
+<rc_calls>
+user_id     int
+datedate    time
+call_id     int
+<rc_users>
+user_id     int
+status      varchar
+company_id  int
+
+Logic: use dense rank on count of calls per user within each company
+soln:
+*/
+WITH tab1
+     AS (SELECT c.user_id                   AS user_id,
+                u.company_id                AS company_id,
+                Dense_rank()
+                  OVER(
+                    partition BY u.company_id
+                    ORDER BY Count(1) DESC) AS rn
+         FROM   rc_calls c
+                LEFT JOIN rc_users u
+                       ON c.user_id = u.user_id
+         GROUP  BY 1,
+                   2)
+SELECT *
+FROM   tab1
+WHERE  rn < 3 
+
+=======
+https://platform.stratascratch.com/coding/2019-top-2-users-with-most-calls?
+
+Difficulty: Medium
+
+Return the top 2 users in each company that called the most. Output the company_id, user_id, and the user's rank. If there are multiple users in the same rank, keep all of them.
+
+Tables:
+<rc_calls>
+user_id     int
+datedate    time
+call_id     int
+<rc_users>
+user_id     int
+status      varchar
+company_id  int
+
+Logic: use dense rank on count of calls per user within each company
+soln:
+*/
+
+WITH tab1
+     AS (SELECT c.user_id                   AS user_id,
+                u.company_id                AS company_id,
+                Dense_rank()
+                  OVER(
+                    partition BY u.company_id
+                    ORDER BY Count(1) DESC) AS rn
+         FROM   rc_calls c
+                LEFT JOIN rc_users u
+                       ON c.user_id = u.user_id
+         GROUP  BY 1,
+                   2)
+SELECT *
+FROM   tab1
+WHERE  rn < 3 
+
+>>>>>>> de90c2e123b14b9b69f25fe71e0c4b0cdec8f8e1

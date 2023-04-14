@@ -1,5 +1,5 @@
 
-Q10: Risky Projects (https://platform.stratascratch.com/coding/10304-risky-projects?code_type=1)
+Q1: Risky Projects (https://platform.stratascratch.com/coding/10304-risky-projects?code_type=1)
 Logic: Join the three tables and group by the sum of salaries of employees for each project
 Soln:
 SELECT p.title,
@@ -18,7 +18,7 @@ HAVING Sum(e.salary * Round(1.00 * ( p.end_date - p.start_date ) / 365, 2)) >
 ORDER  BY p.title 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Q10: Expensive Projects (https://platform.stratascratch.com/coding/10301-expensive-projects?code_type=1)
+Q2: Expensive Projects (https://platform.stratascratch.com/coding/10301-expensive-projects?code_type=1)
 Logic: Join the two tables and group by the count of employees for each project
 Soln:
 WITH tab1
@@ -37,7 +37,7 @@ ORDER  BY 2 DESC
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Q11: Finding Updated Records (https://platform.stratascratch.com/coding/10299-finding-updated-records?code_type=1)
+Q3: Finding Updated Records (https://platform.stratascratch.com/coding/10299-finding-updated-records?code_type=1)
 Logic: super easy
 Soln:
 SELECT id,
@@ -54,7 +54,7 @@ ORDER  BY 1
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-Q12: Most Active Users On Messenger (https://platform.stratascratch.com/coding/10295-most-active-users-on-messenger?code_type=1)
+Q4: Most Active Users On Messenger (https://platform.stratascratch.com/coding/10295-most-active-users-on-messenger?code_type=1)
 Logic: you can use unpivot or union all. Since we need the duplicated thats why union all instead of union 
 Soln:
 WITH tab1 AS
@@ -76,7 +76,7 @@ ORDER BY 2 DESC limit 10
 
 ---------------------------------------------------------------------
 
-Q1: Most Profitable Companies
+Q5: Most Profitable Companies
 Soln:
 SELECT company,
        profits
@@ -85,7 +85,7 @@ ORDER  BY profits DESC
 LIMIT  3; 
 
 ------------------------------
-Q2: Workers With The Highest Salaries
+Q6: Workers With The Highest Salaries
 Soln:
 SELECT t.worker_title
 FROM   worker w
@@ -95,7 +95,7 @@ WHERE  w.salary = (SELECT Max(salary)
                    FROM   worker);
                    
 ------------------------------
-Q3: Users By Average Session Time
+Q7: Users By Average Session Time
 Soln:
 WITH tab1
      AS (SELECT user_id,
@@ -119,7 +119,7 @@ HAVING Avg(EXIT - LOAD) IS NOT NULL
 ORDER  BY 1 
 
 ------------------------------
-Q4: Activity Rank
+Q8: Activity Rank
 Soln:
 SELECT from_user,
        Count(from_user),
@@ -132,7 +132,7 @@ ORDER  BY Count(from_user) DESC,
           from_user;
           
 ------------------------------
-Q5: Dustance Travelled
+Q9: Dustance Travelled
 Soln:
 SELECT l.user_id,
        n.name,
@@ -146,7 +146,7 @@ ORDER  BY Sum(l.distance) DESC
 LIMIT  10; 
 
 ------------------------------
-Q6: Finding User Purchases
+Q10: Finding User Purchases
 Soln:
 WITH tab1
      AS (SELECT user_id,
@@ -163,7 +163,7 @@ HAVING Min(new_date - created_at) BETWEEN 0 AND 7
 ORDER  BY user_id
 
 ------------------------------
-Q7: New Products
+Q11: New Products
 Soln:
 SELECT company_name,
        Sum(CASE
@@ -177,7 +177,7 @@ FROM   car_launches
 GROUP  BY company_name;
 
 ------------------------------
-Q8: Cities With The Most Expensive Homes
+Q12: Cities With The Most Expensive Homes
 Soln:
 SELECT city
 FROM   zillow_transactions
@@ -187,7 +187,7 @@ HAVING Avg(mkt_price) > (SELECT Avg(mkt_price)
 ORDER  BY Avg(mkt_price) 
 
 ------------------------------ [ Instead of using CASE use {max(..) FILTER(WHERE ...)} ]
-Q9: Salaries Differences
+Q13: Salaries Differences
 Soln:
 SELECT Abs(Max(CASE
                  WHEN d.department = 'engineering' THEN e.salary
