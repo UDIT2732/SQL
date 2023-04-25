@@ -58,4 +58,4 @@ The final members table captures the `join_date` when a `customer_id` joined the
 
 ## Solution
 
-![See the Jupyter notebook](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Danny%27s%20Diner%20Case%20Study.ipynb)
+[See the Jupyter notebook](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Danny%27s%20Diner%20Case%20Study.ipynb)
