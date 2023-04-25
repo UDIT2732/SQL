@@ -54,7 +54,7 @@ The final members table captures the `join_date` when a `customer_id` joined the
 
 ## Entity Relationship Diagram
 
-![изображение](https://drive.google.com/uc?id=1GSX6MunvaJ6ECbHNbj7LIPprBsXahBaw)
+![изображение](https://user-images.githubusercontent.com/98699089/156034410-8775d5d2-eda5-4453-9e33-54bfef253084.png)
 
 ## Solution
 
