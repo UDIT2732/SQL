@@ -107,3 +107,7 @@ This table contains all of the `topping_name` values with their corresponding `t
 ## Entity Relationship Diagram
 
 ![изображение](https://user-images.githubusercontent.com/98699089/156217477-8e823838-4a49-4936-9206-afa3cdeda699.png)
+
+## Solution
+
+👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Danny%27s%20Diner%20Case%20Study.ipynb)
