@@ -110,4 +110,4 @@ This table contains all of the `topping_name` values with their corresponding `t
 
 ## Solution
 
-👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Danny%27s%20Diner%20Case%20Study.ipynb)
+👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Pizza%20Runner%20Case%20Study.ipynb)
