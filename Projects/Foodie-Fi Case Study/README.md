@@ -64,3 +64,7 @@ When customers churn - they will keep their access until the end of their curren
 ## Entity Relationship Diagram
 
 ![изображение](https://user-images.githubusercontent.com/98699089/156618670-0540e629-2726-497f-b54f-f882df7a72c5.png)
+
+## Solution
+
+👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Foodie-Fi%20Case%20Study.ipynb)
