@@ -44,5 +44,6 @@ This table stores all customer deposits, withdrawals and purchases made using th
 
 ***
 
-## Question and Solution
+## Solution
 
+👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Data%20Bank%20Case%20Study.ipynb)
