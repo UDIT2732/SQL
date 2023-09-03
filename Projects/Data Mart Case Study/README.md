@@ -8,7 +8,7 @@ View the case study [here](https://8weeksqlchallenge.com/case-study-5/)
   - [Introduction](#introduction)
   - [Problem Statement](#problem-statement)
   - [Dataset used](#dataset-used)
-  - [Case Study Solutions](#case-study-solutions)
+  - [Solution](#solutions)
   
 ## Introduction
 Data Mart is Danny’s latest venture and after running international operations for his online supermarket that specialises in fresh produce - Danny is asking for your support to analyse his sales performance.
@@ -35,3 +35,7 @@ Each record in the dataset is related to a specific aggregated slice of the unde
 
 10 random rows are shown in the table output below from data_mart.weekly_sales
 ![image](https://user-images.githubusercontent.com/77529445/189491192-978f144f-03b6-4dce-b69b-342e212e48e2.png)
+
+## Solution
+
+👉 [Click here to see the Jupyter notebook solution](https://nbviewer.org/github/UDIT2732/Jupyter-Notebooks/blob/main/Data%20Mart%20Case%20Study.ipynb)
